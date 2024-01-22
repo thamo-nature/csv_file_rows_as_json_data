@@ -4,6 +4,7 @@ Python pandas and csv to read csv file and convert rows as json data format
 
 Example csv file data
 
+<pre>
 04-12-2023 22:14:04, Left Temperature, 37
 04-12-2023 22:14:04, Left Set-Point, 37
 04-12-2023 22:14:04, Right Temperature, 37
@@ -18,6 +19,8 @@ Example csv file data
 04-12-2023 22:19:04, Right Set-Point, 37
 04-12-2023 22:19:04, Gas Flow, 15
 04-12-2023 22:19:04, Gas Set-Point, 15
+
+</pre>
 
 Our Goal : 
 
@@ -108,40 +111,45 @@ import sys
               my_dict = [ { "time_stamp_data" : final_concat_date_time , "left_temp" : str(left_temp) , "right_temp" : str(right_temp) , "gas_flow" : str(gas_flow ) } ]   
                    
               result.append(my_dict)
-            
-print(result)
 
-#remove all duplicateds values
-new_list = []
-for one_student_choice in result:
-    if one_student_choice not in new_list:
-        new_list.append(one_student_choice)
-        
-print(new_list)
-
+   <pre>   
+      
+   print(result)
+   
+   #remove all duplicateds values
+   new_list = []
+   for one_student_choice in result:
+       if one_student_choice not in new_list:
+           new_list.append(one_student_choice)
+           
+   print(new_list)
+      
+   </pre>
+   
 #loop through and insert into mysql
-for data_sets in new_list:
-    formatted_dict_values = str(data_sets).replace('[','').replace(']','')
-    new_ff = formatted_dict_values.replace("'", '"')
-    
-    #convert string dict to actual dict format
-    time_stamp_v = eval(new_ff)
-    
-    #print(time_stamp_v)
-    # print(time_stamp_v['time_stamp_data'])
-    # print(time_stamp_v['left_temp'])
-    # print(time_stamp_v['right_temp'])
-    # print(time_stamp_v['gas_flow'])
-    
-    # sql = "INSERT INTO device_data_inc (inc_name, left_temp, right_temp, gas_flow, time_stamp) VALUES (%s, %s, %s, %s, %s)"
-    # val = ("name_device", time_stamp_v['left_temp'],time_stamp_v['right_temp'],time_stamp_v['gas_flow'], time_stamp_v['time_stamp_data'])
-    
-    # mycursor.execute(sql, val)
 
-    print({ time_stamp_v['time_stamp_data'] ,  time_stamp_v['left_temp'] , time_stamp_v['right_temp'] , time_stamp_v['gas_flow'] })
-
-    # mydb.commit()
-
-    # print(mycursor.rowcount, "record inserted.")
+      for data_sets in new_list:
+          formatted_dict_values = str(data_sets).replace('[','').replace(']','')
+          new_ff = formatted_dict_values.replace("'", '"')
+    
+          #convert string dict to actual dict format
+          time_stamp_v = eval(new_ff)
+          
+          #print(time_stamp_v)
+          # print(time_stamp_v['time_stamp_data'])
+          # print(time_stamp_v['left_temp'])
+          # print(time_stamp_v['right_temp'])
+          # print(time_stamp_v['gas_flow'])
+          
+          # sql = "INSERT INTO device_data_inc (inc_name, left_temp, right_temp, gas_flow, time_stamp) VALUES (%s, %s, %s, %s, %s)"
+          # val = ("name_device", time_stamp_v['left_temp'],time_stamp_v['right_temp'],time_stamp_v['gas_flow'], time_stamp_v['time_stamp_data'])
+          
+          # mycursor.execute(sql, val)
+      
+          print({ time_stamp_v['time_stamp_data'] ,  time_stamp_v['left_temp'] , time_stamp_v['right_temp'] , time_stamp_v['gas_flow'] })
+      
+          # mydb.commit()
+      
+          # print(mycursor.rowcount, "record inserted.")
     
 sys.exit(0)
