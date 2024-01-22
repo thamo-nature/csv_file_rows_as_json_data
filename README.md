@@ -30,12 +30,16 @@ Our Goal :
 4. Gas Flow value for the time
    
 Result list to hold all data :
+<pre>
+
 [
     [ {'time_stamp_data': '2023-12-04 22:14:04', 'left_temp': ' 37', 'right_temp': '37', 'gas_flow': '15'} ],
     [ {'time_stamp_data': '2023-12-04 22:19:04', 'left_temp': '37', 'right_temp': '37', 'gas_flow': '15'} ]
 ]
+   
+</pre>
 
-Finally we individual time records we get  =>  {'time_stamp_data': '2023-12-04 22:14:04', 'left_temp': ' 37', 'right_temp': '37', 'gas_flow': '15'}
+Finally individual time records  => {'time_stamp_data': '2023-12-04 22:14:04', 'left_temp': ' 37', 'right_temp': '37', 'gas_flow': '15'}
 
 Libraries : 
 
