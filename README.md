@@ -39,12 +39,7 @@ Finally we individual time records we get  =>  {'time_stamp_data': '2023-12-04 2
 
 Libraries : 
 
-import csv
-import pandas as pd
-import mysql.connector
-from datetime import datetime
-import re
-import sys
+import csv, pandas, mysql.connector, datetime, re, sys
 
 #read last 12 rows from csv
 
